@@ -1,0 +1,1321 @@
+/*
+Theme Name: Alfadoh Theme
+Theme URI: https://alfadoh.com
+Author: Kendryx Alfadoh
+Description: Artist Theme
+Version: 1.1
+Requires at least: 5.0
+Tested up to: 5.4
+Requires PHP: 7.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: twentytwenty
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+/*----------------------------------------*/
+/*  Fonts
+/*----------------------------------------*/
+@font-face {
+  font-family: "Louis George Caf Regular";
+  src: url("inc/fonts/louis-george-caf/Louis George Cafe.ttf") format("truetype");
+  /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: "Louis George Caf Bold";
+  src: url("inc/fonts/louis-george-caf/Louis George Cafe Bold.ttf") format("truetype");
+  /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: "Playfair Display Regular";
+  src: url("inc/fonts/playfair-display/PlayfairDisplay-Regular.otf ") format("truetype");
+  /* Safari, Android, iOS */
+}
+
+/*----------------------------------------*/
+/*  SCSS Variables
+/*----------------------------------------*/
+/*----------------------------------------*/
+/*  Global
+/*----------------------------------------*/
+h1 {
+  font-family: "Louis George Caf Bold", sans-serif;
+  color: #333333;
+}
+
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  h2 {
+    font-size: 1.7em;
+    line-height: 1.5em;
+  }
+}
+
+h2,
+h3,
+h4 {
+  font-family: "Louis George Caf Regular", sans-serif;
+  color: #333333;
+}
+
+h1,
+h2,
+h5 {
+  margin-bottom: 0 !important;
+}
+
+h5 {
+  font-family: "Louis George Caf Regular", sans-serif;
+}
+
+ul {
+  margin: 0 !important;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+p {
+  font-family: "Louis George Caf Regular", sans-serif;
+  color: #5a5a5a;
+  letter-spacing: 0.6px;
+  line-height: 1.6em;
+}
+
+span {
+  font-family: "Playfair Display Regular", sans-serif;
+}
+
+body a {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+body hr {
+  border-top: 3px solid #ad7226;
+  border-radius: 20px;
+  width: 5em;
+  display: block;
+  margin: 0.8rem 0 0.5rem 0;
+}
+
+body header hr {
+  width: 1.5em;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+  opacity: 0.8;
+}
+
+body .button {
+  padding: 0.75em 1.5em;
+  background: #ad7226;
+  border: 2px solid transparent;
+  font-family: "Louis George Caf Regular", sans-serif;
+  text-transform: capitalize;
+  border-radius: 0;
+  color: #fff;
+  text-decoration: none !important;
+  opacity: 1;
+}
+
+body .button:hover {
+  opacity: 1;
+  background: transparent;
+  border: 2px solid #ad7226;
+  border-radius: 0;
+  color: #ad7226;
+}
+
+body .button-2 {
+  opacity: 1;
+  background: transparent;
+  border: 2px solid #ad7226;
+  text-transform: capitalize;
+  color: #ad7226;
+}
+
+body .button-2:hover {
+  opacity: 1;
+  background: #ad7226;
+  border: 2px solid #ad7226;
+  border-radius: 0;
+  color: #fff !important;
+}
+
+.btns {
+  margin-top: 2rem;
+}
+
+.read-more-btn {
+  display: inline-block;
+  color: #ad7226 !important;
+  font-family: "Louis George Caf Regular", sans-serif;
+  text-transform: none;
+  color: #333333;
+  text-decoration: none !important;
+}
+
+.padding hr {
+  display: inline-block;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.padding {
+  padding: 4em 0;
+}
+
+.padding-single {
+  padding: 7rem 0 4rem 0;
+}
+
+@media screen and (min-width: 992px) {
+  .padding-single {
+    padding: 8rem 0 4rem 0;
+  }
+}
+
+nav li.current_page_item a {
+  text-decoration: none;
+  border-bottom: 2px solid #ad7226 !important;
+  padding-bottom: 3px;
+}
+
+/*----------------------------------------*/
+/*  Navbar
+/*----------------------------------------*/
+nav {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  width: 100%;
+  z-index: 8;
+  height: 4.5em;
+}
+
+nav .logo {
+  font-family: "Playfair Display Regular", sans-serif;
+  font-size: 1.2em;
+  letter-spacing: 0.6px;
+  color: #fff;
+  text-decoration: none;
+}
+
+nav .logo span {
+  color: #ad7226;
+}
+
+nav .nav-header {
+  width: 100%;
+}
+
+nav .links-container {
+  background: #fff;
+  position: fixed;
+  height: 100%;
+  width: 70%;
+  top: 0;
+  right: 0;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  z-index: 22;
+}
+
+nav .links-container .btn {
+  display: none;
+}
+
+@media screen and (min-width: 992px) {
+  nav .links-container .btn {
+    display: block;
+  }
+}
+
+nav .links-container ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and (min-width: 992px) {
+  nav .links-container ul {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+nav .links-container ul li {
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+nav .links-container ul li:last-child {
+  display: inline-block;
+}
+
+@media screen and (min-width: 992px) {
+  nav .links-container ul li {
+    margin-bottom: 0;
+    margin-right: 2em !important;
+  }
+}
+
+nav .links-container ul li a {
+  font-size: 1.3em;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 3px;
+}
+
+nav .links-container ul li a:hover {
+  opacity: 1;
+  text-decoration: none;
+  border-bottom: 2px solid #ad7226;
+  padding-bottom: 3px;
+}
+
+@media screen and (max-width: 991px) {
+  nav .links-container ul li a {
+    color: #333333;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  nav .links-container ul li a {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  nav .links-container ul li a {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 992px) {
+  nav .links-container ul {
+    margin: 0;
+  }
+  nav .links-container ul li {
+    display: inline-block;
+    margin-right: 2em !important;
+  }
+  nav .links-container ul li:last-child {
+    margin-right: 0 !important;
+  }
+  nav .links-container a {
+    font-family: "Louis George Caf Bold", sans-serif;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+  }
+  nav .links-container a:hover {
+    opacity: 1;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 2px solid #ad7226;
+    padding-bottom: 3px;
+  }
+  nav .links-container .a-dark:hover {
+    opacity: 1;
+    color: #333333;
+    text-decoration: none;
+    border-bottom: 2px solid #ad7226;
+    padding-bottom: 3px;
+  }
+  nav .links-container .a-light:hover {
+    opacity: 1;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 2px solid #ad7226;
+    padding-bottom: 3px;
+  }
+}
+
+nav a {
+  font-family: "Louis George Caf Bold", sans-serif;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+nav .links-container {
+  position: fixed;
+  height: 100%;
+  width: 70%;
+  top: 0;
+  right: 0;
+  background: #fff;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  z-index: 7;
+}
+
+nav .menu-open {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  background: #fff;
+}
+
+nav #menu-btn {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  z-index: 20;
+}
+
+nav #menu-btn span {
+  width: 32px;
+  height: 4px;
+  margin-bottom: 0.25em;
+  background: #fff;
+  display: block;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+nav #menu-btn .span-dark {
+  background: #333333;
+}
+
+nav #menu-btn .span-white {
+  background: #fff;
+}
+
+nav #menu-btn .menu-btn-open {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  margin: 0;
+}
+
+nav #menu-btn .menu-btn-open-2 {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  position: relative;
+  margin: 0;
+  bottom: 4px;
+}
+
+nav #menu-btn .menu-close {
+  display: none;
+  margin: 0;
+}
+
+nav #menu-btn .span:last-child {
+  margin-bottom: 0em;
+}
+
+nav .shop-icons {
+  display: none;
+}
+
+nav .a-light {
+  color: #fff;
+}
+
+nav .a-dark {
+  color: #333333 !important;
+}
+
+@media (min-width: 992px) {
+  nav a {
+    color: #fff;
+  }
+  nav .links-container {
+    position: static;
+    background: transparent;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    width: auto;
+  }
+  nav .nav-header {
+    width: auto;
+  }
+  nav #menu-btn {
+    display: none;
+  }
+  nav .shop-icons {
+    display: block;
+  }
+}
+
+/* fixed nav */
+.fixed-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  z-index: 4;
+}
+
+.top-link {
+  font-size: 1.25rem;
+  position: fixed;
+  bottom: 3rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2rem;
+  background: #ad7226;
+  place-items: center;
+  border-radius: 4px;
+  -webkit-animation: bounce 3s ease-in-out infinite;
+          animation: bounce 3s ease-in-out infinite;
+  visibility: hidden;
+  z-index: 2;
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.top-link:hover {
+  opacity: 1;
+  color: #fff;
+}
+
+.show-link {
+  visibility: visible;
+  z-index: 100;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+header .container {
+  position: relative;
+  color: #fff;
+  z-index: 2;
+}
+
+header .container .scroll-down-btn {
+  position: absolute;
+  z-index: 8;
+  bottom: 2em;
+  display: none;
+}
+
+@media (min-width: 767px) {
+  header .container .scroll-down-btn {
+    display: block;
+  }
+}
+
+header h1 {
+  text-transform: uppercase;
+}
+
+header h1,
+header h2,
+header p {
+  color: #fff;
+}
+
+header h2 {
+  font-family: "Louis George Caf Regular", sans-serif;
+}
+
+header:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.7;
+}
+
+@media screen and (min-width: 992px) {
+  header:after {
+    width: 100%;
+  }
+}
+
+.overlay {
+  background: #333333;
+  opacity: 0.6;
+  width: 100%;
+  height: 100vh;
+  z-index: 4;
+  position: fixed;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  display: none;
+}
+
+.overlay-visible {
+  display: block;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+/*----------------------------------------*/
+/*  Home
+/*----------------------------------------*/
+.home {
+  /*----------------------------------------*/
+  /*  Blog
+/*----------------------------------------*/
+}
+
+.home header h1 {
+  text-transform: inherit;
+}
+
+@media screen and (min-width: 992px) {
+  .home header {
+    background-attachment: fixed;
+  }
+}
+
+.home header::after {
+  height: 100vh;
+}
+
+.home header .button {
+  padding: 0.75em 1.5em;
+  background: #ad7226;
+  border: 2px solid transparent;
+  font-family: "Louis George Caf Regular", sans-serif;
+  border-radius: 0;
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.home header .button:hover {
+  opacity: 1;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 0;
+  color: #fff;
+}
+
+.home #welcome img {
+  max-height: 40vh;
+}
+
+.home #welcome h4 {
+  color: #fff;
+}
+
+.home #services {
+  background: url("inc/img/background.svg");
+  background-position: center;
+}
+
+.home #services .services-items a {
+  text-decoration: none;
+}
+
+.home #services .services-items div div {
+  border: 2px solid #ad7226;
+}
+
+.home #services .services-items div div h3 {
+  color: #5a5a5a;
+}
+
+.home #services .services-items div div p {
+  color: #5a5a5a;
+  margin-bottom: 0;
+}
+
+.home #blog {
+  background: url("inc/img/background.svg");
+  background-position: center;
+}
+
+.home #blog img {
+  max-height: 30vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.home #blog .row:nth-child(2) a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.home #blog .row:nth-child(2) a:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.home #blog h4 {
+  color: #fff;
+}
+
+.home #blog h4 {
+  margin-bottom: 0 !important;
+}
+
+.home #blog .post-meta span {
+  font-family: "Louis George Caf Regular", sans-serif;
+}
+
+.home #blog .row:last-child .col-sm-12:last-child {
+  margin-bottom: 0 !important;
+}
+
+@media (min-width: 992px) {
+  .home #blog .row:last-child .col-sm-12:nth-last-child(-n + 2) {
+    margin-bottom: 0 !important;
+  }
+}
+
+.blog .blog-post {
+  margin-bottom: 2rem;
+}
+
+.blog .blog-post:last-child {
+  margin-bottom: 0;
+}
+
+.blog .blog-post a {
+  color: #5a5a5a;
+  text-decoration: none;
+}
+
+.blog .blog-post .card-meta {
+  font-size: 0.9em;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.blog .blog-post p {
+  margin-bottom: 0;
+}
+
+.blog .blog-post h2 {
+  margin-bottom: 0.45rem !important;
+}
+
+.blog .blog-post .read-more-btn {
+  margin-top: 0.75rem;
+}
+
+.blog .sidebar .sidebar-module {
+  margin-bottom: 1.5rem;
+}
+
+.blog .sidebar .sidebar-module .search-form {
+  padding: 0.75rem 1.25rem;
+}
+
+.blog .sidebar .sidebar-module .search-form label {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.blog .sidebar .sidebar-module .search-form input {
+  font-family: "Louis George Caf Regular", sans-serif;
+  color: #ad7226;
+  padding: 0;
+  width: 100%;
+  border: 1px solid #ad7226;
+  border-style: none none solid none;
+  text-indent: 8px;
+}
+
+.blog .sidebar .sidebar-module .search-form input.form-control::-webkit-input-placeholder {
+  color: #1d1d1f;
+  font-family: "Montserrat Regular", sans-serif;
+}
+
+.blog .sidebar .sidebar-module .search-form input.form-control:-ms-input-placeholder {
+  color: #1d1d1f;
+  font-family: "Montserrat Regular", sans-serif;
+}
+
+.blog .sidebar .sidebar-module .search-form input.form-control::-ms-input-placeholder {
+  color: #1d1d1f;
+  font-family: "Montserrat Regular", sans-serif;
+}
+
+.blog .sidebar .sidebar-module .search-form input.form-control::placeholder {
+  color: #1d1d1f;
+  font-family: "Montserrat Regular", sans-serif;
+}
+
+.blog .sidebar .sidebar-module .search-form button {
+  position: absolute;
+  right: 1.25rem;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.blog .sidebar .sidebar-module .search-form i {
+  font-size: 14px;
+  color: #ad7226;
+}
+
+.blog .sidebar .sidebar-module ul {
+  list-style: none;
+  padding: 0.75rem 1.25rem;
+  width: 100%;
+}
+
+.blog .sidebar .sidebar-module ul li {
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border: 1px #ad7226 solid;
+  margin-bottom: 0.75rem;
+  border-radius: 4px;
+  width: 100%;
+  display: block;
+}
+
+.blog .sidebar .sidebar-module ul li a {
+  text-decoration: none;
+  color: #ad7226;
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 0.75rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  line-height: 20px;
+}
+
+.blog .sidebar .sidebar-module ul li a:hover {
+  opacity: 1;
+  color: #fff;
+}
+
+.blog .sidebar .sidebar-module ul li:hover {
+  opacity: 1;
+  background: #ad7226;
+  border: 1px transparent solid;
+  color: #fff;
+}
+
+.blog .sidebar .sidebar-module ul li:last-child {
+  margin-bottom: 0;
+}
+
+.blog .sidebar .sidebar-module:last-child {
+  margin-bottom: 0;
+}
+
+.card img {
+  width: 100%;
+  height: 50vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (min-width: 992px) {
+  .page header {
+    background-attachment: fixed;
+  }
+}
+
+.page header::after {
+  height: 50vh;
+}
+
+.blog img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.product-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  cursor: pointer;
+  background: #f5f5f5;
+}
+
+.product-img img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.services .product-img {
+  cursor: default;
+}
+
+.services .product-img img {
+  height: 40vh;
+}
+
+@media screen and (min-width: 767px) {
+  .services .product-img img {
+    height: 45vh;
+  }
+}
+
+.blog .product-img {
+  cursor: default;
+}
+
+.blog .product-img img {
+  height: 40vh;
+}
+
+@media screen and (min-width: 767px) {
+  .blog .product-img img {
+    height: 50vh;
+  }
+}
+
+.about .product-img {
+  cursor: default;
+}
+
+#introduction .product-img,
+.single .product-img {
+  cursor: default;
+}
+
+.img-overlay {
+  position: absolute;
+  width: calc(100% - 30px);
+  color: #fff;
+  background: #0000005b;
+  color: #fff;
+}
+
+/*----------------------------------------*/
+/*  Sidebar
+/*----------------------------------------*/
+.sidebar {
+  width: 100%;
+}
+
+/*----------------------------------------*/
+/*  Products
+/*----------------------------------------*/
+.products .col-sm-12:last-child {
+  margin-bottom: 0 !important;
+}
+
+@media (min-width: 992px) {
+  .products .col-sm-12:nth-last-child(-n + 3) {
+    margin-bottom: 0 !important;
+  }
+}
+
+.products .categories-wrapper {
+  border: 1px solid #333333;
+}
+
+.products .categories-wrapper .tab-active {
+  background: #333333;
+  color: #fff;
+}
+
+.products .categories-wrapper .category {
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.products .categories-wrapper .category h5 {
+  text-transform: capitalize;
+}
+
+.products .categories-wrapper .category:hover {
+  opacity: 1;
+  background: #333333;
+}
+
+.products .categories-wrapper .category:hover h5,
+.products .categories-wrapper .category:hover span {
+  opacity: 1;
+  color: #fff;
+}
+
+.product-details .category {
+  color: #ad7226;
+  font-family: "Louis George Caf Bold", sans-serif;
+}
+
+.product-details .price {
+  font-family: "Louis George Caf Regular", sans-serif;
+}
+
+.product-details hr {
+  border: 0.5px solid #ad7226;
+  width: 3em !important;
+  margin: 0.75rem 0;
+  text-align: left;
+}
+
+.product-details p {
+  margin-bottom: 0;
+}
+
+.product-details a {
+  text-decoration: none;
+}
+
+.home .product-details hr,
+.products .product-details hr {
+  border: 0.5px solid #ad7226;
+  width: 1.5rem !important;
+  margin: 0.5rem auto;
+  text-align: center;
+}
+
+.product .price {
+  font-size: 1.2em;
+}
+
+.product .product-info {
+  background: #f5f5f5;
+  padding: 3em 0;
+  margin-bottom: 5em;
+}
+
+.product .product-info i {
+  color: #ad7226;
+  font-size: 2em;
+}
+
+.product .product-info h5 {
+  font-family: "Louis George Caf Bold", sans-serif;
+}
+
+.product .product-info span {
+  font-family: "Louis George Caf Regular", sans-serif;
+  color: #5a5a5a;
+}
+
+/*----------------------------------------*/
+/*  About
+/*----------------------------------------*/
+.about .banner {
+  padding: 5em 0;
+  position: relative;
+  background: url("../images/paintings/painting-5.png");
+  background-attachment: scroll;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 992px) {
+  .about .banner {
+    background-attachment: fixed;
+  }
+}
+
+.about .banner .container {
+  position: relative;
+  z-index: 3;
+}
+
+.about .banner h2 {
+  color: #fff;
+}
+
+.about .banner i {
+  color: #fff;
+  font-size: 3em;
+}
+
+.about .banner::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: #333333;
+  opacity: 0.6;
+}
+
+.about .experience {
+  background: #f5f5f5;
+  margin-bottom: 1em;
+}
+
+.about .experience span {
+  display: block;
+  font-family: "Louis George Caf Regular", sans-serif;
+}
+
+.about .experience .experience-date {
+  background: #ad7226;
+  width: 30%;
+}
+
+@media screen and (min-width: 992px) {
+  .about .experience .experience-date {
+    width: 15%;
+  }
+}
+
+.about .experience .experience-date span {
+  color: #fff;
+}
+
+.about .experience .experience-meta {
+  width: 70%;
+}
+
+@media screen and (min-width: 992px) {
+  .about .experience .experience-meta {
+    width: 85%;
+  }
+}
+
+.about .experience .experience-meta .experience-title span {
+  font-family: "Louis George Caf Bold", sans-serif;
+}
+
+.about .experience .experience-meta .experience-location span {
+  color: #ad7226;
+}
+
+.about .experience:last-child {
+  margin-bottom: 0;
+}
+
+/*----------------------------------------*/
+/*  Contact
+/*----------------------------------------*/
+.contact .container {
+  position: relative;
+}
+
+.contact .container a {
+  color: #333333;
+}
+
+.contact .container a p {
+  color: #333333;
+}
+
+.contact .container h3 {
+  color: #ad7226;
+}
+
+.contact .container .email a {
+  font-size: 1.3em;
+  text-decoration: none;
+}
+
+.contact .container .row .form-col {
+  padding: 2rem 0;
+}
+
+.contact .container .row .col-sm-12 {
+  background: #fff;
+  text-align: center;
+}
+
+.contact .container .row .col-sm-12 label,
+.contact .container .row .col-sm-12 span,
+.contact .container .row .col-sm-12 input[type="email"],
+.contact .container .row .col-sm-12 input[type="text"],
+.contact .container .row .col-sm-12 textarea {
+  width: 100%;
+  font-family: "Louis George Caf Regular", sans-serif;
+}
+
+.contact .container .row .col-sm-12 textarea {
+  height: 15vh;
+}
+
+.contact .container .row .col-sm-12 label {
+  color: #333333;
+  font-family: "Louis George Caf Regular", sans-serif;
+}
+
+.contact .container .row .col-sm-12 p {
+  font-size: 1.1em;
+  margin-bottom: 0.75rem;
+}
+
+.contact .container .row .col-sm-12 input[type="email"],
+.contact .container .row .col-sm-12 input[type="text"],
+.contact .container .row .col-sm-12 textarea {
+  border: 1px solid #333333;
+  border-style: none none solid none;
+  text-indent: 8px;
+}
+
+.contact .container .row .col-sm-12 input[type="submit"] {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  padding: 0.75em 1.5em;
+  background: #ad7226;
+  border: 2px solid transparent;
+  font-family: "Louis George Caf Regular", sans-serif;
+  text-transform: capitalize;
+  border-radius: 0;
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.contact .container .row .col-sm-12 input[type="submit"]:hover {
+  opacity: 1;
+  background: transparent;
+  color: #ad7226;
+  border: 2px solid #ad7226;
+}
+
+/*----------------------------------------*/
+/*  Privacy
+/*----------------------------------------*/
+.privacy .content p,
+.blogmb-5 mb-lg-0 .content p {
+  margin-bottom: 1rem;
+}
+
+.privacy .content strong,
+.blogmb-5 mb-lg-0 .content strong {
+  font-family: "Louis George Caf Bold", sans-serif;
+}
+
+/*----------------------------------------*/
+/*  Footer
+/*----------------------------------------*/
+footer {
+  background: #333333;
+  padding: 3em 0 0 0 !important;
+}
+
+footer span {
+  font-family: "Louis George Caf Regular", sans-serif;
+}
+
+footer hr {
+  border: 0.5px solid #ad7226 !important;
+  width: 1.5em !important;
+}
+
+@media (min-width: 992px) {
+  footer hr {
+    margin: 0.5em 0;
+  }
+}
+
+footer .social-icons div {
+  margin-right: 2rem;
+}
+
+@media screen and (min-width: 992px) {
+  footer .social-icons div {
+    margin-right: 1.5rem;
+  }
+}
+
+footer .social-icons div:last-child {
+  margin-right: 0;
+}
+
+footer .social-icons div a {
+  color: #fff;
+}
+
+footer .social-icons div a i {
+  font-size: 2em;
+}
+
+footer ul li {
+  font-size: 1.1em;
+  margin-bottom: 0.45rem;
+}
+
+footer ul li:last-child {
+  margin-bottom: 0;
+}
+
+footer ul li a {
+  color: #fff !important;
+  text-decoration: none !important;
+  color: #fff;
+  font-family: "Louis George Caf Regular", sans-serif;
+}
+
+footer h5 {
+  color: #fff;
+}
+
+footer p {
+  color: #fff;
+  font-family: "Louis George Caf Regular", sans-serif;
+  color: #fff;
+  margin: 0;
+}
+
+footer .row:last-child p {
+  font-size: 0.75em;
+}
+/*# sourceMappingURL=style.css.map */

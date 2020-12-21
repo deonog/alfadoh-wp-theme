@@ -1,0 +1,1249 @@
+/*
+Theme Name: Alfadoh Theme
+Theme URI: https://alfadoh.com
+Author: Kendryx Alfadoh
+Description: Artist Theme
+Version: 1.1
+Requires at least: 5.0
+Tested up to: 5.4
+Requires PHP: 7.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: twentytwenty
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/*----------------------------------------*/
+/*  Fonts
+/*----------------------------------------*/
+
+// Louis George Caf
+@font-face {
+  font-family: "Louis George Caf Regular";
+  src: url("inc/fonts/louis-george-caf/Louis\ George\ Cafe.ttf")
+    format("truetype"); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: "Louis George Caf Bold";
+  src: url("inc/fonts/louis-george-caf/Louis\ George\ Cafe\ Bold.ttf")
+    format("truetype"); /* Safari, Android, iOS */
+}
+
+// Playfair Display
+@font-face {
+  font-family: "Playfair Display Regular";
+  src: url("inc/fonts/playfair-display/PlayfairDisplay-Regular.otf ")
+    format("truetype"); /* Safari, Android, iOS */
+}
+
+/*----------------------------------------*/
+/*  SCSS Variables
+/*----------------------------------------*/
+
+// Colors
+$primaryColor: #ad7226;
+$white: #fff;
+$grey: #333333;
+$textColor: #5a5a5a;
+$lightGrey: #f5f5f5;
+
+// Transition
+$transition: all 0.3s ease-in-out;
+
+// Boxshadow
+$lightShadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+// Fonts
+$louisGeorgeRegular: "Louis George Caf Regular", sans-serif;
+$louisGeorgeBold: "Louis George Caf Bold", sans-serif;
+$playfairDisplayRegular: "Playfair Display Regular", sans-serif;
+
+$letterSpacing: 0.6px;
+
+/*----------------------------------------*/
+/*  Global
+/*----------------------------------------*/
+
+h1 {
+  font-family: $louisGeorgeBold;
+  color: $grey;
+  @media screen and (max-width: 767px) {
+    font-size: 2em;
+  }
+}
+
+h2 {
+  @media screen and (max-width: 767px) {
+    font-size: 1.7em;
+    line-height: 1.5em;
+  }
+}
+
+h2,
+h3,
+h4 {
+  font-family: $louisGeorgeRegular;
+  color: $grey;
+}
+
+h1,
+h2,
+h5 {
+  margin-bottom: 0 !important;
+}
+
+h5 {
+  font-family: $louisGeorgeRegular;
+}
+
+ul {
+  margin: 0 !important;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+p {
+  font-family: $louisGeorgeRegular;
+  color: $textColor;
+  letter-spacing: $letterSpacing;
+  line-height: 1.6em;
+}
+
+span {
+  font-family: $playfairDisplayRegular;
+}
+
+body a {
+  transition: $transition;
+}
+
+body hr {
+  border-top: 3px solid $primaryColor;
+  border-radius: 20px;
+  width: 5em;
+  display: block;
+  margin: 0.8rem 0 0.5rem 0;
+}
+
+body header hr {
+  width: 1.5em;
+}
+
+a {
+  text-decoration: none !important;
+  &:hover {
+    text-decoration: none !important;
+    opacity: 0.8;
+  }
+}
+
+body .button {
+  padding: 0.75em 1.5em;
+  background: $primaryColor;
+  border: 2px solid transparent;
+  font-family: $louisGeorgeRegular;
+  text-transform: capitalize;
+  border-radius: 0;
+  color: $white;
+  text-decoration: none !important;
+  opacity: 1;
+}
+
+body .button:hover {
+  opacity: 1;
+  background: transparent;
+  border: 2px solid $primaryColor;
+  border-radius: 0;
+  color: $primaryColor;
+}
+
+body .button-2 {
+  opacity: 1;
+  background: transparent;
+  border: 2px solid $primaryColor;
+  text-transform: capitalize;
+  color: $primaryColor;
+}
+
+body .button-2:hover {
+  opacity: 1;
+  background: $primaryColor;
+  border: 2px solid $primaryColor;
+  border-radius: 0;
+  color: $white !important;
+}
+
+.btns {
+  margin-top: 2rem;
+}
+
+.read-more-btn {
+  display: inline-block;
+  color: $primaryColor !important;
+  font-family: $louisGeorgeRegular;
+  text-transform: none;
+  color: $grey;
+  text-decoration: none !important;
+}
+
+.padding hr {
+  display: inline-block;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.padding {
+  padding: 4em 0;
+}
+
+.padding-single {
+  padding: 7rem 0 4rem 0;
+  @media screen and (min-width: 992px) {
+    padding: 8rem 0 4rem 0;
+  }
+}
+
+nav {
+  li.current_page_item a {
+    text-decoration: none;
+    border-bottom: 2px solid $primaryColor !important;
+    padding-bottom: 3px;
+  }
+}
+
+/*----------------------------------------*/
+/*  Navbar
+/*----------------------------------------*/
+
+nav {
+  transition: $transition;
+  position: absolute;
+  width: 100%;
+  z-index: 8;
+  height: 4.5em;
+
+  .logo {
+    font-family: $playfairDisplayRegular;
+    font-size: 1.2em;
+    letter-spacing: $letterSpacing;
+    color: #fff;
+    text-decoration: none;
+    span {
+      color: $primaryColor;
+    }
+  }
+
+  .nav-header {
+    width: 100%;
+  }
+
+  .links-container {
+    background: #fff;
+    position: fixed;
+    height: 100%;
+    width: 70%;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    transition: $transition;
+    z-index: 22;
+    .btn {
+      display: none;
+      @media screen and (min-width: 992px) {
+        display: block;
+      }
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      align-items: start;
+      transition: $transition;
+      @media screen and (min-width: 992px) {
+        flex-direction: row;
+        align-items: center;
+      }
+      li {
+        display: inline-block;
+        margin-bottom: 2rem;
+        &:last-child {
+          display: inline-block;
+        }
+
+        @media screen and (min-width: 992px) {
+          margin-bottom: 0;
+          margin-right: 2em !important;
+        }
+        a {
+          font-size: 1.3em;
+          transition: $transition;
+          border-bottom: 2px solid transparent;
+          padding-bottom: 3px;
+          &:hover {
+            opacity: 1;
+            text-decoration: none;
+            border-bottom: 2px solid $primaryColor;
+            padding-bottom: 3px;
+          }
+          @media screen and (max-width: 991px) {
+            color: $grey;
+          }
+          @media screen and (min-width: 576px) {
+            font-size: 1.5em;
+          }
+          @media screen and (min-width: 992px) {
+            font-size: 1em;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 992px) {
+    .links-container ul {
+      margin: 0;
+    }
+
+    .links-container ul li {
+      display: inline-block;
+      margin-right: 2em !important;
+    }
+
+    .links-container ul li:last-child {
+      margin-right: 0 !important;
+    }
+
+    .links-container a {
+      font-family: $louisGeorgeBold;
+      padding-bottom: 3px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .links-container a:hover {
+      opacity: 1;
+      color: $white;
+      text-decoration: none;
+      border-bottom: 2px solid $primaryColor;
+      padding-bottom: 3px;
+    }
+
+    .links-container .a-dark:hover {
+      opacity: 1;
+      color: $grey;
+      text-decoration: none;
+      border-bottom: 2px solid $primaryColor;
+      padding-bottom: 3px;
+    }
+
+    .links-container .a-light:hover {
+      opacity: 1;
+      color: $white;
+      text-decoration: none;
+      border-bottom: 2px solid $primaryColor;
+      padding-bottom: 3px;
+    }
+  }
+
+  a {
+    font-family: $louisGeorgeBold;
+    text-decoration: none;
+    transition: $transition;
+  }
+
+  .links-container {
+    position: fixed;
+    height: 100%;
+    width: 70%;
+    top: 0;
+    right: 0;
+    background: $white;
+    transform: translateX(100%);
+    transition: $transition;
+    z-index: 7;
+  }
+
+  .menu-open {
+    transform: translateX(0);
+    background: $white;
+  }
+
+  #menu-btn {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    z-index: 20;
+
+    span {
+      width: 32px;
+      height: 4px;
+      margin-bottom: 0.25em;
+      background: $white;
+      display: block;
+      transition: $transition;
+    }
+
+    .span-dark {
+      background: $grey;
+    }
+
+    .span-white {
+      background: $white;
+    }
+
+    .menu-btn-open {
+      transform: rotate(45deg);
+      margin: 0;
+    }
+
+    .menu-btn-open-2 {
+      transform: rotate(-45deg);
+      position: relative;
+      margin: 0;
+      bottom: 4px;
+    }
+
+    .menu-close {
+      display: none;
+      margin: 0;
+    }
+
+    .span:last-child {
+      margin-bottom: 0em;
+    }
+  }
+
+  .shop-icons {
+    display: none;
+  }
+
+  .a-light {
+    color: $white;
+  }
+
+  .a-dark {
+    color: $grey !important;
+  }
+
+  @media (min-width: 992px) {
+    a {
+      color: $white;
+    }
+
+    .links-container {
+      position: static;
+      background: transparent;
+      transform: translateX(0);
+      width: auto;
+    }
+
+    .nav-header {
+      width: auto;
+    }
+
+    #menu-btn {
+      display: none;
+    }
+
+    .shop-icons {
+      display: block;
+    }
+  }
+}
+
+/* fixed nav */
+.fixed-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: $white;
+  box-shadow: $lightShadow;
+  z-index: 4;
+}
+
+.top-link {
+  font-size: 1.25rem;
+  position: fixed;
+  bottom: 3rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2rem;
+  background: $primaryColor;
+  place-items: center;
+  border-radius: 4px;
+  animation: bounce 3s ease-in-out infinite;
+  visibility: hidden;
+  z-index: 2;
+  color: #fff;
+  text-decoration: none !important;
+  &:hover {
+    opacity: 1;
+    color: #fff;
+  }
+}
+
+.show-link {
+  visibility: visible;
+  z-index: 100;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+header {
+  .container {
+    position: relative;
+    color: $white;
+    z-index: 2;
+
+    .scroll-down-btn {
+      position: absolute;
+      z-index: 8;
+      bottom: 2em;
+      display: none;
+      @media (min-width: 767px) {
+        display: block;
+      }
+    }
+  }
+
+  h1 {
+    text-transform: uppercase;
+  }
+
+  h1,
+  h2,
+  p {
+    color: $white;
+  }
+
+  h2 {
+    font-family: $louisGeorgeRegular;
+  }
+}
+
+header:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.7;
+  @media screen and (min-width: 992px) {
+    width: 100%;
+  }
+}
+
+.overlay {
+  background: $grey;
+  opacity: 0.6;
+  width: 100%;
+  height: 100vh;
+  z-index: 4;
+  position: fixed;
+  transition: $transition;
+  display: none;
+}
+
+.overlay-visible {
+  display: block;
+  transition: $transition;
+}
+
+/*----------------------------------------*/
+/*  Home
+/*----------------------------------------*/
+
+.home {
+  header {
+    h1 {
+      text-transform: inherit;
+    }
+    @media screen and (min-width: 992px) {
+      background-attachment: fixed;
+    }
+  }
+
+  header::after {
+    height: 100vh;
+  }
+
+  header .button {
+    padding: 0.75em 1.5em;
+    background: $primaryColor;
+    border: 2px solid transparent;
+    font-family: $louisGeorgeRegular;
+    border-radius: 0;
+    color: $white;
+    text-decoration: none !important;
+  }
+
+  header .button:hover {
+    opacity: 1;
+    background: transparent;
+    border: 2px solid $white;
+    border-radius: 0;
+    color: $white;
+  }
+
+  #welcome {
+    img {
+      max-height: 40vh;
+    }
+
+    h4 {
+      color: $white;
+    }
+  }
+
+  #services {
+    background: url("inc/img/background.svg");
+    background-position: center;
+
+    .services-items {
+      a {
+        text-decoration: none;
+      }
+      div {
+        div {
+          border: 2px solid $primaryColor;
+
+          h3 {
+            color: $textColor;
+          }
+
+          p {
+            color: $textColor;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  /*----------------------------------------*/
+  /*  Blog
+/*----------------------------------------*/
+
+  #blog {
+    background: url("inc/img/background.svg");
+    background-position: center;
+
+    img {
+      max-height: 30vh;
+      object-fit: cover;
+    }
+
+    .row {
+      &:nth-child(2) {
+        a {
+          text-decoration: none;
+          color: #fff;
+          &:hover {
+            opacity: 1;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+    h4 {
+      color: $white;
+    }
+
+    h4 {
+      margin-bottom: 0 !important;
+    }
+
+    .post-meta span {
+      font-family: $louisGeorgeRegular;
+    }
+
+    .row:last-child .col-sm-12:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    @media (min-width: 992px) {
+      .row:last-child .col-sm-12:nth-last-child(-n + 2) {
+        margin-bottom: 0 !important;
+      }
+    }
+  }
+}
+
+.blog {
+  .blog-post {
+    margin-bottom: 2rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    a {
+      color: $textColor;
+      text-decoration: none;
+    }
+    .card-meta {
+      font-size: 0.9em;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    p {
+      margin-bottom: 0;
+    }
+    h2 {
+      margin-bottom: 0.45rem !important;
+    }
+    .read-more-btn {
+      margin-top: 0.75rem;
+    }
+  }
+  .sidebar {
+    .sidebar-module {
+      margin-bottom: 1.5rem;
+      .search-form {
+        padding: 0.75rem 1.25rem;
+        label {
+          width: 100%;
+          margin-bottom: 0;
+        }
+        input {
+          font-family: $louisGeorgeRegular;
+          color: $primaryColor;
+          padding: 0;
+          width: 100%;
+          border: 1px solid $primaryColor;
+          border-style: none none solid none;
+          text-indent: 8px;
+        }
+
+        input.form-control::placeholder {
+          color: #1d1d1f;
+          font-family: "Montserrat Regular", sans-serif;
+        }
+
+        button {
+          position: absolute;
+          right: 1.25rem;
+          height: 40px;
+          background: none;
+          border: none;
+          cursor: pointer;
+        }
+        i {
+          font-size: 14px;
+          color: $primaryColor;
+        }
+      }
+      ul {
+        list-style: none;
+        padding: 0.75rem 1.25rem;
+        width: 100%;
+        li {
+          cursor: pointer;
+          transition: $transition;
+          border: 1px $primaryColor solid;
+          margin-bottom: 0.75rem;
+          border-radius: 4px;
+          width: 100%;
+          display: block;
+          a {
+            text-decoration: none;
+            color: $primaryColor;
+            display: block;
+            height: 100%;
+            width: 100%;
+            padding: 0.75rem;
+            box-sizing: border-box;
+            line-height: 20px;
+            &:hover {
+              opacity: 1;
+              color: #fff;
+            }
+          }
+          &:hover {
+            opacity: 1;
+            background: $primaryColor;
+            border: 1px transparent solid;
+            color: #fff;
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.card {
+  img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+  }
+}
+
+.page {
+  header {
+    @media screen and (min-width: 992px) {
+      background-attachment: fixed;
+    }
+  }
+  header::after {
+    height: 50vh;
+  }
+}
+
+.blog img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.product-img {
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+  background: $lightGrey;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.services {
+  .product-img {
+    cursor: default;
+    img {
+      height: 40vh;
+      @media screen and (min-width: 767px) {
+        height: 45vh;
+      }
+    }
+  }
+}
+
+.blog {
+  .product-img {
+    cursor: default;
+    img {
+      height: 40vh;
+      @media screen and (min-width: 767px) {
+        height: 50vh;
+      }
+    }
+  }
+}
+
+.about {
+  .product-img {
+    cursor: default;
+  }
+}
+
+#introduction,
+.single {
+  .product-img {
+    cursor: default;
+  }
+}
+
+.img-overlay {
+  position: absolute;
+  width: calc(100% - 30px);
+  color: $white;
+  background: #0000005b;
+  color: $white;
+}
+
+/*----------------------------------------*/
+/*  Sidebar
+/*----------------------------------------*/
+
+.sidebar {
+  width: 100%;
+}
+
+/*----------------------------------------*/
+/*  Products
+/*----------------------------------------*/
+
+.products {
+  .col-sm-12:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  @media (min-width: 992px) {
+    .col-sm-12:nth-last-child(-n + 3) {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  .categories-wrapper {
+    border: 1px solid $grey;
+
+    .tab-active {
+      background: $grey;
+      color: $white;
+    }
+
+    .category {
+      cursor: pointer;
+      transition: $transition;
+      h5 {
+        text-transform: capitalize;
+      }
+    }
+
+    .category:hover {
+      opacity: 1;
+      background: $grey;
+    }
+
+    .category:hover h5,
+    .category:hover span {
+      opacity: 1;
+      color: $white;
+    }
+  }
+}
+
+.product-details {
+  .category {
+    color: $primaryColor;
+    font-family: $louisGeorgeBold;
+  }
+
+  .price {
+    font-family: $louisGeorgeRegular;
+  }
+
+  hr {
+    border: 0.5px solid $primaryColor;
+    width: 3em !important;
+    margin: 0.75rem 0;
+    text-align: left;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.home,
+.products {
+  .product-details {
+    hr {
+      border: 0.5px solid $primaryColor;
+      width: 1.5rem !important;
+      margin: 0.5rem auto;
+      text-align: center;
+    }
+  }
+}
+
+.product {
+  .price {
+    font-size: 1.2em;
+  }
+
+  .product-info {
+    background: $lightGrey;
+    padding: 3em 0;
+    margin-bottom: 5em;
+
+    i {
+      color: $primaryColor;
+      font-size: 2em;
+    }
+
+    h5 {
+      font-family: $louisGeorgeBold;
+    }
+
+    span {
+      font-family: $louisGeorgeRegular;
+      color: $textColor;
+    }
+  }
+}
+
+/*----------------------------------------*/
+/*  About
+/*----------------------------------------*/
+
+.about {
+  .banner {
+    padding: 5em 0;
+    position: relative;
+    background: url("../images/paintings/painting-5.png");
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @media (min-width: 992px) {
+      background-attachment: fixed;
+    }
+
+    .container {
+      position: relative;
+      z-index: 3;
+    }
+
+    h2 {
+      color: $white;
+    }
+
+    i {
+      color: $white;
+      font-size: 3em;
+    }
+  }
+
+  .banner::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: $grey;
+    opacity: 0.6;
+  }
+
+  .experience {
+    background: $lightGrey;
+    margin-bottom: 1em;
+
+    span {
+      display: block;
+      font-family: $louisGeorgeRegular;
+    }
+    .experience-date {
+      background: $primaryColor;
+      width: 30%;
+      @media screen and (min-width: 992px) {
+        width: 15%;
+      }
+      span {
+        color: $white;
+      }
+    }
+
+    .experience-meta {
+      width: 70%;
+      @media screen and (min-width: 992px) {
+        width: 85%;
+      }
+      .experience-title {
+        span {
+          font-family: $louisGeorgeBold;
+        }
+      }
+      .experience-location {
+        span {
+          color: $primaryColor;
+        }
+      }
+    }
+  }
+
+  .experience:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/*----------------------------------------*/
+/*  Contact
+/*----------------------------------------*/
+
+.contact {
+  .container {
+    position: relative;
+    a {
+      color: $grey;
+      p {
+        color: $grey;
+      }
+    }
+    h3 {
+      color: $primaryColor;
+    }
+    .email {
+      a {
+        font-size: 1.3em;
+        text-decoration: none;
+      }
+    }
+    .row {
+      .form-col {
+        padding: 2rem 0;
+      }
+      .col-sm-12 {
+        background: #fff;
+        text-align: center;
+        label,
+        span,
+        input[type="email"],
+        input[type="text"],
+        textarea {
+          width: 100%;
+          font-family: $louisGeorgeRegular;
+        }
+        textarea {
+          height: 15vh;
+        }
+        label {
+          color: $grey;
+          font-family: $louisGeorgeRegular;
+        }
+        p {
+          font-size: 1.1em;
+          margin-bottom: 0.75rem;
+        }
+        input[type="email"],
+        input[type="text"],
+        textarea {
+          border: 1px solid $grey;
+          border-style: none none solid none;
+          text-indent: 8px;
+        }
+        input[type="submit"] {
+          transition: $transition;
+          padding: 0.75em 1.5em;
+          background: $primaryColor;
+          border: 2px solid transparent;
+          font-family: $louisGeorgeRegular;
+          text-transform: capitalize;
+          border-radius: 0;
+          color: $white;
+          text-decoration: none !important;
+          &:hover {
+            opacity: 1;
+            background: transparent;
+            color: $primaryColor;
+            border: 2px solid $primaryColor;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*----------------------------------------*/
+/*  Privacy
+/*----------------------------------------*/
+
+.privacy,
+.blogmb-5 mb-lg-0 {
+  .content {
+    p {
+      margin-bottom: 1rem;
+    }
+
+    strong {
+      font-family: $louisGeorgeBold;
+    }
+  }
+}
+
+/*----------------------------------------*/
+/*  Footer
+/*----------------------------------------*/
+
+footer {
+  background: $grey;
+  padding: 3em 0 0 0 !important;
+  span {
+    font-family: $louisGeorgeRegular;
+  }
+
+  hr {
+    border: 0.5px solid $primaryColor !important;
+    width: 1.5em !important;
+  }
+
+  @media (min-width: 992px) {
+    hr {
+      margin: 0.5em 0;
+    }
+  }
+
+  .social-icons {
+    div {
+      margin-right: 2rem;
+      @media screen and (min-width: 992px) {
+        margin-right: 1.5rem;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+      a {
+        color: #fff;
+        i {
+          font-size: 2em;
+        }
+      }
+    }
+  }
+
+  ul {
+    li {
+      font-size: 1.1em;
+      margin-bottom: 0.45rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      a {
+        color: #fff !important;
+        text-decoration: none !important;
+        color: $white;
+        font-family: $louisGeorgeRegular;
+      }
+    }
+  }
+
+  h5 {
+    color: $white;
+  }
+
+  p {
+    color: $white;
+    font-family: $louisGeorgeRegular;
+    color: $white;
+    margin: 0;
+  }
+
+  .row:last-child {
+    p {
+      font-size: 0.75em;
+    }
+  }
+}
